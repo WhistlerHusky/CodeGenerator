@@ -1,0 +1,40 @@
+﻿<Window x:Class="CodeGenerator.Shell"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="MainWindow" Height="350" Width="525"
+    xmlns:converter="clr-namespace:CodeGenerator.Converter"
+    xmlns:moduleCommonLibrary="clr-namespace:ModuleCommonLibrary;assembly=ModuleCommonLibrary"
+    xmlns:regions="http://www.codeplex.com/CompositeWPF">
+    <Window.Resources>
+        <converter:StudentConverter x:Key="StudentConverter" />
+    </Window.Resources>
+    <Window.DataContext>
+        <moduleCommonLibrary:ClassRoomViewModel/>
+    </Window.DataContext>
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="0.01*"/>
+            <RowDefinition Height="0.25*"/>
+            <RowDefinition Height="0.25*"/>
+        </Grid.RowDefinitions>
+        <Border Grid.Column="0" Grid.Row="1" CornerRadius="4,4,4,4" BorderBrush="#193441" Background="#FCFFF5" BorderThickness="2,2,2,2" Margin="5" Padding="5">
+            <ItemsControl regions:RegionManager.RegionName="StudentListViewModule" />
+        </Border>
+        <ComboBox Name="comboBox" Grid.Column="2" ItemsSource="{Binding Students}" SelectedItem="{Binding ElementName=listView, Path=SelectedItem}" DisplayMemberPath="StudentName" Margin="1,0,0,0" Grid.Row="1" />
+        <TextBox Name="textbox1" Grid.Row="2" Grid.Column="0" Text="{Binding ElementName=comboBox, Path=SelectedItem.StudentName, Mode=OneWay}"/>
+        <TextBox Name="textbox2" Grid.Row="2" Grid.Column="1" Text="{Binding ElementName=comboBox, Path=SelectedItem.StudentNumber, Mode=OneWay}"/>
+        <Button Grid.Row="2" Grid.Column="2" Command="{Binding ButtonClicked}" Margin="0,0,1,0">
+            <Button.CommandParameter>
+                <MultiBinding Converter="{StaticResource StudentConverter}">
+                    <Binding ElementName="textbox1"/>
+                    <Binding ElementName="textbox2"/>
+                </MultiBinding>
+            </Button.CommandParameter>
+        </Button>
+    </Grid>
+</Window>
