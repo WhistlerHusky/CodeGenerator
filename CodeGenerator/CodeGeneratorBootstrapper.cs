@@ -25,8 +25,14 @@ namespace CodeGenerator
 
         protected override void InitializeModules()
         {
-            IModule moduleA = Container.Resolve<ListViewModule.StudentListViewModule>();
-            moduleA.Initialize(); 
+            IModule menuModule = Container.Resolve<MenuModule.MenuModule>();
+            menuModule.Initialize();
+
+            IModule studentListViewModule = Container.Resolve<ListViewModule.StudentListViewModule>();
+            studentListViewModule.Initialize();
+
+            IModule logModule = Container.Resolve<LogModule.LogModule>();
+            logModule.Initialize(); 
         }
 
         protected override ILoggerFacade CreateLogger()

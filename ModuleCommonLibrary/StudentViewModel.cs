@@ -1,57 +1,47 @@
-﻿using System.ComponentModel;
+﻿using System.Collections.ObjectModel;
+using System.Windows.Controls;
+using Microsoft.Practices.Prism.Commands;
 
 namespace ModuleCommonLibrary
 {
-    public class StudentViewModel : INotifyPropertyChanged
+    public class StudentViewModel
     {
-        private Student _student;
 
-        public event PropertyChangedEventHandler PropertyChanged;
+        public DelegateCommand<object> ButtonClicked { get { return new DelegateCommand<object>(UpdateAlbumArtistsExecute); } }
+        //public TestConverter TestConverter2 { get; set; }
+        public ObservableCollection<Student> Students
+        {
+            get { return _students; }
+            set { _students = value; }
+        }
+
+        private ObservableCollection<Student> _students;
 
         public StudentViewModel()
         {
-            _student = new Student { StudentName = "Unknown", StudentNumber = "Unknow" };
-        }
-        void RaisePropertyChanged(string propertyName)
-        {
-            PropertyChangedEventHandler handler = PropertyChanged;
-
-            if (handler != null)
-            {
-                handler(this, new PropertyChangedEventArgs(propertyName));
-            }
+            Students = new ObservableCollection<Student>
+                {
+                    new Student{ StudentName = "Jun", StudentNumber = "20021635"},
+                    new Student{ StudentName = "Han", StudentNumber = "20021636"}
+                };
         }
 
-        public string StudentNumber
+        void UpdateAlbumArtistsExecute(object parameter)
         {
-            get
+            object[] obj = parameter as object[];
+            var textBox1 = obj[0] as TextBox;
+            var textBox2 = obj[1] as TextBox;
+            Student student = new Student
             {
-                return _student.StudentNumber;
-            }
-            set
-            {
-                if (_student.StudentNumber == value)
-                    return;
+                StudentName = textBox1.Text,
+                StudentNumber = textBox2.Text
+            };
 
-                _student.StudentNumber = value;
-                RaisePropertyChanged("StudentNumber");
-            }
-        }
-
-        public string StudentName
-        {
-            get
+            if (student != null)
             {
-                return _student.StudentName;
-            }
-            set
-            {
-                if (_student.StudentName == value)
-                    return;
-
-                _student.StudentName = value;
-                RaisePropertyChanged("StudentName");
+                _students.Add(student);
             }
         }
     }
+
 }

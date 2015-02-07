@@ -139,6 +139,14 @@
       <Project>{E9B2C181-29F9-4B0D-A9BC-136ACD932156}</Project>
       <Name>ListViewModule</Name>
     </ProjectReference>
+    <ProjectReference Include="..\LogViewModule\LogViewModule.csproj">
+      <Project>{178D3474-9345-419B-8010-25A2C7936AF7}</Project>
+      <Name>LogViewModule</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MenuModule\MenuModule.csproj">
+      <Project>{5426E455-35F7-4F27-BA11-B15427679261}</Project>
+      <Name>MenuModule</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ModuleCommonLibrary\ModuleCommonLibrary.csproj">
       <Project>{43AE8011-A29D-4B98-92AA-179659714A8D}</Project>
       <Name>ModuleCommonLibrary</Name>
