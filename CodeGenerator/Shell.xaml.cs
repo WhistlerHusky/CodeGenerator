@@ -12,6 +12,5 @@ namespace CodeGenerator
             InitializeComponent();
         }
         public Microsoft.Practices.Unity.IUnityContainer Container { get; set; }
-
     }
 }

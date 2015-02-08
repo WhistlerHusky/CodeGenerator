@@ -7,7 +7,7 @@ namespace ModuleCommonLibrary
     public class StudentViewModel
     {
 
-        public DelegateCommand<object> ButtonClicked { get { return new DelegateCommand<object>(UpdateAlbumArtistsExecute); } }
+        public DelegateCommand<object> ButtonActionCommand { get { return new DelegateCommand<object>(UpdateAlbumArtistsExecute); } }
         //public TestConverter TestConverter2 { get; set; }
         public ObservableCollection<Student> Students
         {

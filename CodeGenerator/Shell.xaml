@@ -11,34 +11,14 @@
     <Window.DataContext>
         <moduleCommonLibrary:StudentViewModel/>
     </Window.DataContext>
-    <StackPanel>
-        <ItemsControl regions:RegionManager.RegionName="MenuModule"/>
-        <Grid>
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition Height="0.01*"/>
-                <RowDefinition Height="0.25*"/>
-                <RowDefinition Height="0.25*"/>
-            </Grid.RowDefinitions>
-            <Border Grid.Column="0" Grid.Row="1" CornerRadius="4,4,4,4" BorderBrush="#193441" Background="#FCFFF5" BorderThickness="2,2,2,2" Margin="5" Padding="5">
-                <ItemsControl regions:RegionManager.RegionName="StudentListViewModule" />
-            </Border>
-            <ComboBox Name="comboBox" Grid.Column="2" ItemsSource="{Binding Students}" SelectedIndex="0" DisplayMemberPath="StudentName" Margin="1,0,0,0" Grid.Row="1" />
-            <TextBox Name="textbox1" Grid.Row="2" Grid.Column="0" Text="{Binding ElementName=comboBox, Path=SelectedItem.StudentName, Mode=OneWay}"/>
-            <TextBox Name="textbox2" Grid.Row="2" Grid.Column="1" Text="{Binding ElementName=comboBox, Path=SelectedItem.StudentNumber, Mode=OneWay}"/>
-            <Button Grid.Row="2" Grid.Column="2" Command="{Binding ButtonClicked}" Margin="0,0,1,0">
-                <Button.CommandParameter>
-                    <MultiBinding Converter="{StaticResource StudentConverter}">
-                        <Binding ElementName="textbox1"/>
-                        <Binding ElementName="textbox2"/>
-                    </MultiBinding>
-                </Button.CommandParameter>
-            </Button>
-        </Grid>
-        <ItemsControl regions:RegionManager.RegionName="LogModule"/>
-    </StackPanel>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <ContentControl Grid.Row="0" regions:RegionManager.RegionName="MenuModule"/>
+        <ContentControl Grid.Row="1" regions:RegionManager.RegionName="TextEditorModule"/>
+        <ContentControl Grid.Row="2" regions:RegionManager.RegionName="LogModule"/>
+    </Grid>
 </Window>

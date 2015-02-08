@@ -9,7 +9,7 @@ namespace CodeGenerator
 {
     public class CodeGeneratorBootstrapper : UnityBootstrapper
     {
-        CallbackLogger _callbackLogger = new CallbackLogger();
+        readonly CallbackLogger _callbackLogger = new CallbackLogger();
         protected override System.Windows.DependencyObject CreateShell()
         {
             return ServiceLocator.Current.GetInstance<Shell>();
@@ -28,8 +28,8 @@ namespace CodeGenerator
             IModule menuModule = Container.Resolve<MenuModule.MenuModule>();
             menuModule.Initialize();
 
-            IModule studentListViewModule = Container.Resolve<ListViewModule.StudentListViewModule>();
-            studentListViewModule.Initialize();
+            IModule textEditorModule = Container.Resolve<TextEditorModule.TextEditorModule>();
+            textEditorModule.Initialize();
 
             IModule logModule = Container.Resolve<LogModule.LogModule>();
             logModule.Initialize(); 
