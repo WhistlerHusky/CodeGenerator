@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using Xceed.Wpf.AvalonDock;
 
 namespace CodeGenerator
 {
@@ -12,5 +13,10 @@ namespace CodeGenerator
             InitializeComponent();
         }
         public Microsoft.Practices.Unity.IUnityContainer Container { get; set; }
+
+        private void Onload(object sender, RoutedEventArgs e)
+        {
+  
+        }
     }
 }

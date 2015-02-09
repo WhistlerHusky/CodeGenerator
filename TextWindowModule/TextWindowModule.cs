@@ -1,5 +1,4 @@
 ﻿
-using System.Windows;
 using Microsoft.Practices.Prism.Logging;
 using Microsoft.Practices.Prism.Modularity;
 using Microsoft.Practices.Prism.Regions;
@@ -25,7 +24,7 @@ namespace TextEditorModule
             this._logger.Log("TextEditorModule Initialize()", Category.Info, Priority.Medium);
     
             var module = Container.Resolve<TextEditorModuleView>();
-            RegionManager.Regions["TextEditorModule"].Add(module);
+            //RegionManager.Regions["TextEditorModule"].Add(module);
         }
     }
 }

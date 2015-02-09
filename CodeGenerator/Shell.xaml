@@ -1,10 +1,11 @@
 ﻿<Window x:Class="CodeGenerator.Shell"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
-        Title="MainWindow" Height="350" Width="525"
+        Title="MainWindow" Height="650" Width="525"
     xmlns:converter="clr-namespace:CodeGenerator.Converter"
     xmlns:moduleCommonLibrary="clr-namespace:ModuleCommonLibrary;assembly=ModuleCommonLibrary"
-    xmlns:regions="http://www.codeplex.com/CompositeWPF">
+    xmlns:regions="http://www.codeplex.com/CompositeWPF"
+    xmlns:avalonDock="http://schemas.xceed.com/wpf/xaml/avalondock">
     <Window.Resources>
         <converter:StudentConverter x:Key="StudentConverter" />
     </Window.Resources>
@@ -15,10 +16,22 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="*"/>
-            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
         <ContentControl Grid.Row="0" regions:RegionManager.RegionName="MenuModule"/>
-        <ContentControl Grid.Row="1" regions:RegionManager.RegionName="TextEditorModule"/>
-        <ContentControl Grid.Row="2" regions:RegionManager.RegionName="LogModule"/>
+        <avalonDock:DockingManager Grid.Row="1" x:Name="dockingManager">
+            <avalonDock:LayoutRoot>
+                <avalonDock:LayoutPanel DockHeight="*" Orientation="Vertical">
+                    <avalonDock:LayoutDocumentPane> <!--얘가 없으면 우측 좌측 붙는게 제대로 작동안함-->
+                    </avalonDock:LayoutDocumentPane>
+                    <avalonDock:LayoutPanel DockHeight="Auto">
+                        <avalonDock:LayoutAnchorablePane>
+                            <avalonDock:LayoutAnchorable Title="Log">
+                                <ContentControl  regions:RegionManager.RegionName="LogModule"/>
+                            </avalonDock:LayoutAnchorable>
+                        </avalonDock:LayoutAnchorablePane>
+                    </avalonDock:LayoutPanel>
+                </avalonDock:LayoutPanel>
+            </avalonDock:LayoutRoot>
+        </avalonDock:DockingManager>
     </Grid>
 </Window>
