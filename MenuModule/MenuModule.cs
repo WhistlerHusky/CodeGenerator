@@ -1,4 +1,5 @@
 ﻿using MenuModule.View;
+using MenuModule.ViewModel;
 using Microsoft.Practices.Prism.Logging;
 using Microsoft.Practices.Prism.Modularity;
 using Microsoft.Practices.Prism.Regions;
@@ -24,6 +25,7 @@ namespace MenuModule
             this._logger.Log("MenuModule Initialize()", Category.Info, Priority.Medium);
 
             var menuModule = Container.Resolve<MenuView>();
+            menuModule.DataContext = Container.Resolve<MenuViewModel>();
             RegionManager.Regions["MenuModule"].Add(menuModule);
         }
     }

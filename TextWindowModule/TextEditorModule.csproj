@@ -72,26 +72,29 @@
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
     <Reference Include="WindowsBase" />
+    <Reference Include="Xceed.Wpf.AvalonDock, Version=2.0.2000.0, Culture=neutral, PublicKeyToken=3e4669d2f30244f4, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\..\Coding\WPF\MVVMPractice\AvalonDock\bin\Debug\Xceed.Wpf.AvalonDock.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TextEditorModuleEventAggregation.cs" />
     <Compile Include="TextWindowModule.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModel\TextWindowViewModel.cs" />
-    <Compile Include="TextEditorModuleView.xaml.cs">
-      <DependentUpon>TextEditorModuleView.xaml</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
-    <Page Include="TextEditorModuleView.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
-  </ItemGroup>
-  <ItemGroup>
-    <Folder Include="View\" />
+    <ProjectReference Include="..\CodeGenerator.EventAggregation\CodeGenerator.EventAggregation.csproj">
+      <Project>{C1702D8B-0A2E-4747-B850-105CADF70710}</Project>
+      <Name>CodeGenerator.EventAggregation</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DockingController\DockingController.csproj">
+      <Project>{50773DCE-3140-4B84-805B-B227E3BEF013}</Project>
+      <Name>DockingController</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

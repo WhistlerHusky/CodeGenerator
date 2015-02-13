@@ -139,6 +139,10 @@
     <Folder Include="ViewModel\" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DockingController\DockingController.csproj">
+      <Project>{50773DCE-3140-4B84-805B-B227E3BEF013}</Project>
+      <Name>DockingController</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ListViewModule\ListViewModule.csproj">
       <Project>{E9B2C181-29F9-4B0D-A9BC-136ACD932156}</Project>
       <Name>ListViewModule</Name>
@@ -154,10 +158,6 @@
     <ProjectReference Include="..\ModuleCommonLibrary\ModuleCommonLibrary.csproj">
       <Project>{43AE8011-A29D-4B98-92AA-179659714A8D}</Project>
       <Name>ModuleCommonLibrary</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\TextWindowModule\TextEditorModule.csproj">
-      <Project>{F0A9C87E-BC88-4119-8620-BC5F9BFA43C6}</Project>
-      <Name>TextEditorModule</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

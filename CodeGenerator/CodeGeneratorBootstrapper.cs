@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using DockingController;
 using Microsoft.Practices.Prism.Logging;
 using Microsoft.Practices.Prism.Modularity;
 using Microsoft.Practices.Prism.UnityExtensions;
@@ -15,6 +16,13 @@ namespace CodeGenerator
             return ServiceLocator.Current.GetInstance<Shell>();
         }
 
+        protected override void ConfigureContainer()
+        {
+            base.ConfigureContainer();
+
+            this.RegisterTypeIfMissing(typeof(IDockController), typeof(DockController), true);
+        }
+
         protected override void InitializeShell()
         {
             base.InitializeShell();
@@ -27,9 +35,6 @@ namespace CodeGenerator
         {
             IModule menuModule = Container.Resolve<MenuModule.MenuModule>();
             menuModule.Initialize();
-
-            IModule textEditorModule = Container.Resolve<TextEditorModule.TextEditorModule>();
-            textEditorModule.Initialize();
 
             IModule logModule = Container.Resolve<LogModule.LogModule>();
             logModule.Initialize(); 

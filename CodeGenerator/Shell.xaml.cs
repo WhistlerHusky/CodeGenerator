@@ -1,4 +1,5 @@
 ﻿using System.Windows;
+using DockingController;
 using Xceed.Wpf.AvalonDock;
 
 namespace CodeGenerator
@@ -8,15 +9,16 @@ namespace CodeGenerator
     /// </summary>
     public partial class Shell : Window
     {
+        //public Microsoft.Practices.Unity.IUnityContainer Container { get; set; }
         public Shell()
         {
             InitializeComponent();
         }
-        public Microsoft.Practices.Unity.IUnityContainer Container { get; set; }
 
-        private void Onload(object sender, RoutedEventArgs e)
+        public Shell(IDockController dock)
+            : this()
         {
-  
+            dock.DockingManager = dockingManager;
         }
     }
 }

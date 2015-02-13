@@ -11,7 +11,6 @@ namespace MenuModule.View
         public MenuView()
         {
             InitializeComponent();
-            DataContext = new MenuViewModel();
         }
     }
 }
